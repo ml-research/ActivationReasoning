@@ -20,18 +20,32 @@ It transforms continuous activations into logical propositions and applies expli
 * **Control:** Steer model activations directly for alignment and safety.
 
 
-## 🚀 Getting Started
+## 🔧 Installation
 AR is compatible with:
 
 * [**SAELens**](https://github.com/decoderesearch/SAELens) (for Gemma-Scope)
 * [**EleutherAI Sparsify**](https://github.com/EleutherAI/sparsify) (for SAE-Llama)
 
-Please install the corresponding repository before running AR.
-For a step-by-step example, see **`golden_gate.ipynb`**.
+Please install the corresponding repository before running AR. 
+For Sparsify install the corresponing repository. For SAELens you may use python 3.11 and install dependencies via:
 
-We recommend using AR with one of the following configurations:
+```bash
+pip install -r requirements.txt
+```
+
+## 🚀 Deploying AR
+The `golden_gate.ipynb` notebook (our Golden Gate Bridge walkthrough) shows the full flow end to end. The quick-start below mirrors that flow:
+- Pick a backbone + SAE pair (`llama3_1`, `gemma2` examples) and point AR to the layer/hook where activations should be read.
+- Define your symbolic ingredients (`rules`, `concepts`) and a cache directory to store discovered activations and reasoning artifacts.
+- Instantiate `ActivationReasoning` with a `LogicConfig`; defaults favor top-k concept search/steering. See `ar/config.py` for every knob (search, detection, steering, reasoning) and use `LogicConfig.load/save` to version configs.
+- Run `search()` once to index concept latent representations (uses config search/detection knobs, caches to `output/`).
+- Call `detect()` to scan prompts and return detected concepts/metadata without generation.
+- Use `generate()` to steer generation with active rules; pass `logic_config` to override on the fly and `return_meta_data=True` to inspect concept/rule activations.
 
 ```python
+from activation_reasoning import ActivationReasoning
+from activation_reasoning.logic.config import LogicConfig
+
 llama3_1 = {
     "model_name": "meta-llama/Meta-Llama-3.1-8B",
     "sae_name": "EleutherAI/sae-llama-3.1-8b-64x",
@@ -45,50 +59,18 @@ gemma2 = {
     "layer": 20,
     "hookpoint": "layer_20/width_131k/canonical",
 }
+
+al_model = ActivationReasoning(
+    rules=rules,
+    concepts=concepts,
+    cache_dir=f"output",
+    **gemma2,
+    config=LogicConfig(),
+    verbose=True,
+    )
+
 ```
 
-## ⚙️ Configuration Reference
-
-AR is initialized using a configuration object that controls **concept search**, **detection**, and **downstream steering**.
-Below is an overview of key parameters from `config.py`:
-
-```python
-# ---------- Activation Logic Configuration ----------
-
-# === Search ===
-search_label = "word"         # "word" | "sentence" | "position"
-search_label_filter = "last"  # "all" | "last"
-search_top_k = 10             # number of SAE features considered
-
-
-# === Concept Dictionary ===
-# Concept Representation
-  - either Single/Multi Feature Representation ('top_k') or Relational Feature Represenation ('tree')
-concept_dict = "top_k" # "top_k" | "tree"
-# For Top-K Concept Dictionary:
-
-concept_dict_ordering = "unique_first" # "unique_first" | "original_order"
-concept_dict_size = 1  # 1 for Single Feature concept dictionary, >1 for Multi-Feature concept dictionary
-# For Tree Concept Dictionary:
-concept_dict_tree_depth = 5 # Depth of search tree (if strategy = "tree")
-
-# === Detection ===
-detection_top_k_output = 2          # number of SAE features considered for each output token
-detection_threshold = "auto"        # "auto" or float ≥ 0
-detection_allow_multi = False       # allow multiple activating propositions for each token
-detection_scope = "input"           # "input" | "output" | "full_sequence"
-
-# === Steering ===
-steering_factor = 0.5               # strength of activation steering
-steering_top_k_rule = 10            # number of SAE features considered for steering
-steering_weighting_function = "log_decay"  # weighting scheme
-steering_norm = 2                   # 1 | 2 | "off"
-steering_methodology = "sum_shift"  # "sum_shift" | "mean_shift" | "max_shift"
-steering_duration = None            # number of tokens to steer (None = all)
-
-# === Reasoner ===
-reasoner_rules_checking = "legacy"  # "legacy" | "simple" | "complex" | "open_world"
-```
 
 
 
