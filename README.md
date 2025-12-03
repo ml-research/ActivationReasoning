@@ -12,6 +12,8 @@ It transforms continuous activations into logical propositions and applies expli
 
 
 
+
+
 ## 🧩 Key Features
 
 * **Logic in Latent Space:** Apply symbolic rules over latent activations.
@@ -71,7 +73,9 @@ al_model = ActivationReasoning(
 
 ```
 
+## 🧩 Example Use Cases
 
+![Diagram](images/motivation.svg)
 
 
 ## 📈 Results Summary
