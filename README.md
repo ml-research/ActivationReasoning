@@ -1,7 +1,8 @@
 # ActivationReasoning: Logical Reasoning in Latent Activation Spaces
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.15787-b31b1b.svg)](https://arxiv.org/abs/2510.18184)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+[![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Rail2Country-yellow)](https://huggingface.co/datasets/AIML-TUDA/Rail2Country)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) 
 
 **ActivationReasoning (AR)** is a framework that embeds **logical reasoning directly into the latent activation space of large language models (LLMs)**.
 It transforms continuous activations into logical propositions and applies explicit reasoning rules over them, enabling transparent, interpretable, and controllable model behavior.
@@ -102,7 +103,6 @@ If you use this code or datasets, please cite:
   author={Lukas Helff and Ruben Härle and Wolfgang Stammer and Felix Friedrich and Manuel Brack and Antonia Wüst and Hikaru Shindo and Patrick Schramowski and Kristian Kersting},
   booktitle={NeurIPS 2025 Workshop on Foundations of Reasoning in Language Models},
   year={2025},
-  url={https://openreview.net/forum?id=C25SgeXWjE}
 }
 ```
 
