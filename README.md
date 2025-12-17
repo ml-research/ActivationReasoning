@@ -1,6 +1,6 @@
 # ActivationReasoning: Logical Reasoning in Latent Activation Spaces
 
-[![arXiv](https://img.shields.io/badge/arXiv-2506.15787-b31b1b.svg)](https://arxiv.org/abs/2510.18184)
+[![arXiv](https://img.shields.io/badge/arXiv-2510.18184-b31b1b.svg)](https://arxiv.org/abs/2510.18184)
 [![Hugging Face](https://img.shields.io/badge/🤗%20Hugging%20Face-Rail2Country-yellow)](https://huggingface.co/datasets/AIML-TUDA/Rail2Country)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT) 
 
