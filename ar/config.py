@@ -4,9 +4,6 @@ import json
 import os
 from warnings import warn
 
-from numpy import isin
-
-
 @dataclass
 class LogicConfig:
     """Configuration class for Activation Logic system.

@@ -24,13 +24,27 @@ It transforms continuous activations into logical propositions and applies expli
 
 
 ## 🔧 Installation
+Install from source:
+
+```bash
+pip install .
+```
+
+or from PyPI (once released):
+
+```bash
+pip install activation-reasoning
+```
+
 AR is compatible with:
 
 * [**SAELens**](https://github.com/decoderesearch/SAELens) (for Gemma-Scope)
 * [**EleutherAI Sparsify**](https://github.com/EleutherAI/sparsify) (for SAE-Llama)
 
-Please install the corresponding repository before running AR. 
-For Sparsify install the corresponing repository. For SAELens you may use python 3.11 and install dependencies via:
+Please install the corresponding SAE backend before running AR.
+For SAELens, install the `sae-lens` package.
+For Sparsify, install from the corresponding repository.
+If you want the notebook/demo environment, install extra dependencies via:
 
 ```bash
 pip install -r requirements.txt
