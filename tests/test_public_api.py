@@ -18,9 +18,9 @@ class PublicAPITest(unittest.TestCase):
 
     def test_public_package_imports(self):
         pkg = importlib.import_module("activation_reasoning")
-        self.assertTrue(hasattr(pkg, "ActivationReasoning"))
-        self.assertTrue(hasattr(pkg, "LogicConfig"))
-        self.assertTrue(hasattr(pkg, "LogicalParser"))
+        self.assertIn("ActivationReasoning", pkg.__all__)
+        self.assertIn("LogicConfig", pkg.__all__)
+        self.assertIn("LogicalParser", pkg.__all__)
 
 
 if __name__ == "__main__":
