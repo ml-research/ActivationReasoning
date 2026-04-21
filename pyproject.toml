@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "activation-reasoning"
+version = "0.1.0"
+description = "ActivationReasoning: Logical reasoning in latent activation spaces"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "ActivationReasoning contributors" }
+]
+keywords = ["llm", "reasoning", "interpretability", "sae", "activation-steering"]
+dependencies = [
+  "joblib",
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "seaborn",
+  "torch",
+  "tqdm",
+  "transformers",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/ml-research/ActivationReasoning"
+Repository = "https://github.com/ml-research/ActivationReasoning"
+Issues = "https://github.com/ml-research/ActivationReasoning/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ar*", "activation_reasoning*"]
+exclude = ["images*", "tests*"]
