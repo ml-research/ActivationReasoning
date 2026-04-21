@@ -44,5 +44,5 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["ar*", "activation_reasoning*"]
+include = ["ar", "ar.*", "activation_reasoning", "activation_reasoning.*"]
 exclude = ["images*", "tests*"]
