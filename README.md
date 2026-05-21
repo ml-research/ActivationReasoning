@@ -112,11 +112,12 @@ AR outperforms standard SAEs, instruction-tuned models, and even reasoning-speci
 If you use this code or datasets, please cite:
 
 ```bibtex
-@inproceedings{helff2025activationreasoning,
-  title={ActivationReasoning: Logical Reasoning in Latent Activation Spaces},
-  author={Lukas Helff and Ruben Härle and Wolfgang Stammer and Felix Friedrich and Manuel Brack and Antonia Wüst and Hikaru Shindo and Patrick Schramowski and Kristian Kersting},
-  booktitle={NeurIPS 2025 Workshop on Foundations of Reasoning in Language Models},
-  year={2025},
+@inproceedings{
+helff2026activationreasoning,
+title={ActivationReasoning: Logical Reasoning in Latent Activation Spaces},
+author={Lukas Helff and Ruben Härle and Wolfgang Stammer and Felix Friedrich and Manuel Brack and Antonia Wüst and Hikaru Shindo and Patrick Schramowski and Kristian Kersting},
+booktitle={The Fourteenth International Conference on Learning Representations},
+year={2026},
 }
 ```
 
